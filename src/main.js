@@ -30,7 +30,7 @@ const isGameOver = function(head) {
 }
 
 const isSnakeHittingWall = function(head) {
-  return head.x > 119 || head.x < 0 || head.y > 59 || head.y < 0;
+  return head.x > 118 || head.x < 1 || head.y > 58 || head.y < 1;
 }
 
 const showGameOverMessage = function() {
