@@ -9,7 +9,7 @@ const animateSnake = function() {
   let oldHead = snake.getHead();
   let oldTail = snake.move();
   let head = snake.getHead();
-  isGameOver(head);
+  if (isGameOver(head)) return;
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
@@ -26,11 +26,12 @@ const isGameOver = function(head) {
     removeActionListener();
     clearInterval(animator);
     showGameOverMessage();
+    return true;
   }
 }
 
 const isSnakeHittingWall = function(head) {
-  return head.x > 118 || head.x < 1 || head.y > 58 || head.y < 1;
+  return head.x > 119 || head.x < 0 || head.y > 59 || head.y < 0;
 }
 
 const showGameOverMessage = function() {
