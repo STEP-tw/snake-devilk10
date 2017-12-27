@@ -35,7 +35,7 @@ const isSnakeHittingWall = function(head) {
 
 const showGameOverMessage = function() {
   let message = document.getElementById("gameOver");
-  message.innerHTML = 'Game Over';
+  message.style.visibility='visible';
 }
 
 const isSnakeOverriding = function(head, body) {

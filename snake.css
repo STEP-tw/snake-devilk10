@@ -27,4 +27,5 @@
 
 #gameOver{
   align : center;
+  visibility: hidden;
 }
