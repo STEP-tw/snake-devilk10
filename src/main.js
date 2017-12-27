@@ -9,6 +9,7 @@ const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
+  isGameOver(head);
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
@@ -17,6 +18,20 @@ const animateSnake=function() {
     createFood(numberOfRows,numberOfCols);
     drawFood(food);
   }
+}
+
+const isGameOver= function (head) {
+  if (head.x>119 || head.x<0 || head.y>59 || head.y<0 ) {
+    removeActions();
+    let message=document.getElementById("gameOver");
+    message.innerHTML='Game Over';
+  }
+}
+
+const removeActions = function () {
+  clearInterval(animator);
+  let grid=document.getElementById("keys");
+  removeEventListener("onkeyup", changeSnakeDirection);
 }
 
 const changeSnakeDirection=function(event) {

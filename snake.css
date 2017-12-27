@@ -24,3 +24,8 @@
   background-color: blue;
   border-radius: 50%;
 }
+
+#gameOver{
+  align : center;
+  font-size 72px;
+}
