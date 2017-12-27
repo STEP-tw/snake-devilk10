@@ -9,7 +9,7 @@ const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
-  isGameOver(head);
+  isGameOver(head,oldTail);
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
@@ -20,12 +20,23 @@ const animateSnake=function() {
   }
 }
 
-const isGameOver= function (head) {
-  if (head.x>119 || head.x<0 || head.y>59 || head.y<0 ) {
+const isGameOver= function (head,oldTail) {
+  let status=isSnakeOverriding(snake.getHead(),snake.getBody())
+  if (head.x>119 || head.x<0 || head.y>59 || head.y<0 || status) {
     removeActions();
     let message=document.getElementById("gameOver");
     message.innerHTML='Game Over';
   }
+}
+
+const isSnakeOverriding = function (head,body) {
+  let status = false;
+  for (var i = 0; i < body.length; i++) {
+    if (body[i].x==head.x && body[i].y==head.y) {
+        status=true;
+    }
+  }
+  return status;
 }
 
 const removeActions = function () {
