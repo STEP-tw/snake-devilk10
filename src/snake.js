@@ -23,5 +23,15 @@ Snake.prototype={
   },
   turnRight:function() {
     this.head=this.head.turnRight();
+  },
+  isSnakeHittingWall:function(cols,rows) {
+   return this.head.x > cols-1 || this.head.x < 0
+   || this.head.y > rows-1 || this.head.y < 0;
+ },
+  isSnakeOverriding:function() {
+    let head=this.head;
+    return this.body.some(function (part) {
+      return part.x==head.x && part.y == head.y;
+    });
   }
 }

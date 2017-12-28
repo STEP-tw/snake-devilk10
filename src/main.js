@@ -21,8 +21,9 @@ const animateSnake = function() {
 }
 
 const isGameOver = function(head) {
-  let status = isSnakeOverriding(snake.getHead(), snake.getBody())
-  if (isSnakeHittingWall(head) || status) {
+  let status = snake.isSnakeOverriding();
+  let isTouch = snake.isSnakeHittingWall(numberOfCols,numberOfRows);
+  if (isTouch || status) {
     removeActionListener();
     clearInterval(animator);
     showGameOverMessage();
@@ -30,20 +31,9 @@ const isGameOver = function(head) {
   }
 }
 
-const isSnakeHittingWall = function(head) {
-  return head.x > 119 || head.x < 0 || head.y > 59 || head.y < 0;
-}
-
 const showGameOverMessage = function() {
   let message = document.getElementById("gameOver");
   message.style.visibility='visible';
-}
-
-const isSnakeOverriding = function(head, body) {
-  for (let index = 0; index < body.length; index++) {
-    if (body[index].x == head.x && body[index].y == head.y)
-      return true;
-  }
 }
 
 const removeActionListener = function() {
